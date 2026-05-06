@@ -324,7 +324,7 @@ public:
         return s;
     }
 
-    // Checks if the given square can be used for en passant
+    // Checks if the given square can be used for en passant move
     bool isEnPassantSquare(int r, int c, char color) const {
         if (r == epRow && c == epCol && epPawnRow != -1) {
             if (cells[epPawnRow][epPawnCol] != 0 && cells[epPawnRow][epPawnCol]->getColor() != color) {
@@ -335,7 +335,7 @@ public:
         return false;
     }
 
-    // Checks all conditions needed for castling
+    // Checking all conditions needed for castling
     bool canCastle(char color, int sr, int sc, int dr, int dc) {
         if (!inside(sr, sc) || !inside(dr, dc)) return false;
         if (sr != dr) return false;
@@ -665,7 +665,7 @@ public:
         cout << "\n";
     }
 
-    // Changes a pawn into another piece after reaching the last row
+    // Changes a pawn into another piece after reaching the last row like queen, rook, or horse
     void promotePawn(int r, int c) {
         if (cells[r][c] == 0 || cells[r][c]->type() != 'P') return;
 
