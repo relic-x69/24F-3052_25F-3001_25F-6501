@@ -274,7 +274,7 @@ public:
         return "Black";
     }
 
-    // Checks if the path is clear for rook, bishop, and queen
+    // Checking if the path is clear for rook, bishop, and queen
     bool pathClear(int sr, int sc, int dr, int dc) const {
         int rStep = 0;
         int cStep = 0;
@@ -296,7 +296,7 @@ public:
         return true;
     }
 
-    // Converts input like e2 into array indexes
+    // Converting input like e2 into array indexes
     bool posToIndex(string pos, int& r, int& c) const {
         if (pos.length() != 2) return false;
 
@@ -316,7 +316,7 @@ public:
         return true;
     }
 
-    // Converts row and column back into chess position
+    // Converting row and column back into chess position
     string indexToPos(int r, int c) const {
         string s = "a1";
         s[0] = char('a' + c);
