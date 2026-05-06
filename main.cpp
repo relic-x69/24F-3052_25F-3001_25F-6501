@@ -114,6 +114,7 @@ public:
     virtual bool canMove(Board& board, int sr, int sc, int dr, int dc) const = 0;
 };
 
+// Pawn, Rook, Knight, Bishop, Queen, and King classes inherit from Piece and implement the pure virtual functions
 class Pawn : public Piece {
 public:
     Pawn(char c) : Piece(c) {}
@@ -784,7 +785,7 @@ public:
     }
 };
 
-// Pawn has normal movement, first two-step move, diagonal capture, and en passant
+// Pawn has normal movement, first two-step move, diagonal capture, and en passant depending on the situation
 bool Pawn::canMove(Board& board, int sr, int sc, int dr, int dc) const {
     int dir = 1;
 
