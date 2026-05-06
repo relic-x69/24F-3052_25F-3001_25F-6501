@@ -180,7 +180,7 @@ public:
     bool canMove(Board& board, int sr, int sc, int dr, int dc) const;
 };
 
-// Board stores the complete chessboard and most of the game rules
+// Board stores the chessboard and controls most of the rule checking
 class Board {
 private:
     Piece* cells[8][8];
