@@ -57,8 +57,8 @@ void printTitle() {
     cout << "Type help to see commands.\n";
 }
 
-// This is the parent class for all chess pieces
-// Common things like color and moved status are stored here
+// This is the parent class for all chess pieces and it is abstract because of the pure virtual functions.
+// Common things like color and moved status are stored here and the child classes only implement the movement rules and type of piece.
 class Piece {
 private:
     char color;
