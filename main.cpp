@@ -816,7 +816,7 @@ bool Pawn::canMove(Board& board, int sr, int sc, int dr, int dc) const {
     return false;
 }
 
-// Rook moves straight horizontally or vertically
+// Rook moves straight horizontally or vertically and path must be clear for it to move, and it cannot jump over pieces
 bool Rook::canMove(Board& board, int sr, int sc, int dr, int dc) const {
     if (sr != dr && sc != dc) {
         return false;
@@ -825,7 +825,7 @@ bool Rook::canMove(Board& board, int sr, int sc, int dr, int dc) const {
     return board.pathClear(sr, sc, dr, dc);
 }
 
-// Knight moves in L-shape and can jump over pieces
+// Knight moves in L-shape and can jump over pieces so no need to check the path for it, and it can move to a square if it is empty or has an enemy piece
 bool Knight::canMove(Board& board, int sr, int sc, int dr, int dc) const {
     int r = myAbs(dr - sr);
     int c = myAbs(dc - sc);
@@ -833,7 +833,7 @@ bool Knight::canMove(Board& board, int sr, int sc, int dr, int dc) const {
     return (r == 2 && c == 1) || (r == 1 && c == 2);
 }
 
-// Bishop moves diagonally
+// Bishop moves diagonally and path must be clear for it to move, and it cannot jump over pieces
 bool Bishop::canMove(Board& board, int sr, int sc, int dr, int dc) const {
     if (myAbs(dr - sr) != myAbs(dc - sc)) {
         return false;
@@ -842,7 +842,7 @@ bool Bishop::canMove(Board& board, int sr, int sc, int dr, int dc) const {
     return board.pathClear(sr, sc, dr, dc);
 }
 
-// Queen moves like both rook and bishop
+// Queen moves like both rook and bishop so it can move straight horizontally, vertically, or diagonally and path must be clear for it to move, and it cannot jump over pieces
 bool Queen::canMove(Board& board, int sr, int sc, int dr, int dc) const {
     if (sr == dr || sc == dc) {
         return board.pathClear(sr, sc, dr, dc);
@@ -855,7 +855,7 @@ bool Queen::canMove(Board& board, int sr, int sc, int dr, int dc) const {
     return false;
 }
 
-// King moves one step, and castling is also handled here
+// King moves one step, and castling is also handled here but the actual move is done in Board's makeActualMove function because it involves moving the rook as well, and the conditions for castling are checked in Board's canCastle function
 bool King::canMove(Board& board, int sr, int sc, int dr, int dc) const {
     if (myAbs(dr - sr) <= 1 && myAbs(dc - sc) <= 1) {
         return true;
