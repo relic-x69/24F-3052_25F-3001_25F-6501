@@ -505,7 +505,7 @@ public:
         return check;
     }
 
-    // Final check before allowing a move
+	// Final check before allowing a move based on board color, piece existence, piece color, move rules of the piece, and king safety
     bool isLegalMoveForColor(int sr, int sc, int dr, int dc, char color) {
         if (!inside(sr, sc) || !inside(dr, dc)) return false;
         if (sr == dr && sc == dc) return false;
@@ -519,7 +519,7 @@ public:
         return true;
     }
 
-    // Checks if the player still has any legal move left
+	// Checks if the player still has any legal move left by trying all possible moves of all pieces and seeing if any of them is legal
     bool hasAnyLegalMove(char color) {
         for (int sr = 0; sr < 8; sr++) {
             for (int sc = 0; sc < 8; sc++) {
@@ -701,7 +701,7 @@ public:
         cells[r][c]->setMoved(true);
     }
 
-    // Actually moves the piece after all rules have been checked
+	// Actually moves the piece after all rules have been checked and also handles special moves like castling and en passant, and updates the turn and en passant data
     void makeActualMove(int sr, int sc, int dr, int dc) {
         Piece* moving = cells[sr][sc];
         Piece* dest = cells[dr][dc];
@@ -765,7 +765,7 @@ public:
         turn = otherColor(turn);
     }
 
-    // Takes input like e2 e4 and moves the piece if it is legal
+	// Takes input like e2 e4 and moves the piece if it is legal by calling the above functions in order and also prints messages if the move is not legal
     bool moveText(string from, string to) {
         int sr, sc, dr, dc;
 
