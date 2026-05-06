@@ -371,7 +371,7 @@ public:
         return false;
     }
 
-    // Checks whether a square is being attacked by the opponent
+    // Checking whether a square is being attacked by the opponent
     bool isSquareAttacked(int r, int c, char byColor) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -424,7 +424,7 @@ public:
         return false;
     }
 
-    // Finds the king and checks if it is under attack
+    // Finds the king and checking if it is under attack
     bool isInCheck(char color) {
         int kr = -1;
         int kc = -1;
@@ -443,7 +443,7 @@ public:
         return isSquareAttacked(kr, kc, otherColor(color));
     }
 
-    // Tries a move temporarily to see if our own king becomes unsafe
+    // Tries a move temporarily to see if our own king becomes unsafe or not
     bool wouldLeaveKingInCheck(int sr, int sc, int dr, int dc, char color) {
         Piece* moving = cells[sr][sc];
         Piece* dest = cells[dr][dc];
