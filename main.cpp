@@ -107,10 +107,10 @@ public:
         }
     }
 
-    // Each child class tells which piece it is
+	// Each child class tells which piece it is by implementing this function and it is used in symbol() function to return the correct symbol for each piece
     virtual char type() const = 0;
 
-    // Each chess piece has its own movement rule
+	// Each chess piece has its own movement rule so this pure virtual function is implemented in each child class and it checks if the piece can move from source square to destination square based on the rules of that piece and also based on the situation of the board like if there are pieces blocking the way or if there is an enemy piece to capture
     virtual bool canMove(Board& board, int sr, int sc, int dr, int dc) const = 0;
 };
 
