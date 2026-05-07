@@ -549,7 +549,7 @@ public:
         return !isInCheck(color) && !hasAnyLegalMove(color);
     }
 
-    // Prints the board and marks possible moves if needed
+	// Prints the board and marks possible moves if needed with * for empty squares and x for captures, and also shows the symbols for pieces and the coordinates around the board for better readability, and also shows the legend for symbols at the bottom
     void display(bool mark[8][8] = 0) const {
         setNormalColor();
 
@@ -609,7 +609,7 @@ public:
         setNormalColor();
     }
 
-    // Shows all possible legal moves of the selected piece
+	// Shows all possible legal moves of the selected piece by marking the squares on the board and also printing the coordinates of those squares, and also prints messages if the input is invalid or if there is no piece or if the piece belongs to the opponent
     void showPossibleMoves(string from) {
         int sr, sc;
 
