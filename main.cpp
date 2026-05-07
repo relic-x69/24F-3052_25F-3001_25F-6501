@@ -879,7 +879,7 @@ public:
         gameOver = false;
     }
 
-    // Shows the available commands
+	// Shows the available commands and how to use them, and it is shown at the start of the game and also when the user types help
     void help() {
         cout << "\nCommands:\n";
         cout << "  show e2       : show possible moves of a piece represented with * ( possible moves ) and X (captures)\n";
@@ -888,7 +888,7 @@ public:
         cout << "  exit          : quit game\n";
     }
 
-    // Main loop keeps the game running until it ends
+	// Main loop keeps the game running until it ends and it takes input and calls the appropriate functions based on the input, and also prints messages if the input is invalid
     void start() {
         string first, from, to;
 
@@ -938,7 +938,7 @@ public:
         setNormalColor();
     }
 
-    // Plays one move and then checks if the game is over
+	// Plays one move and then checks if the game is over after that, and also prints messages if the move is not legal
     void playMove(string from, string to) {
         char before = board.getTurn();
 
@@ -967,7 +967,7 @@ public:
 };
 
 int main() {
-    // These lines help Windows terminal show chess symbols correctly
+    // These lines help Windows terminal show chess symbols correctly everytime
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
 
