@@ -16,13 +16,13 @@ char otherColor(char c) {
     return 'W';
 }
 
-// Brings the console color back to normal after printing colored boxes
+// Brings the console color back to normal after printing colored boxes everytime
 void setNormalColor() {
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(h, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 }
 
-// Gives the chessboard alternate tile colors
+// Gives the chessboard alternate tile colors black and white, and also makes the colors a bit brighter for better visibility
 void setTileColor(int r, int c) {
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -36,14 +36,14 @@ void setTileColor(int r, int c) {
     }
 }
 
-// Clears the screen so the board refreshes after every command
+// Clears the screen so the board refreshes after every command and also sets the color back to normal because sometimes the color can get messed up after printing colored boxes
 void clearScreen() {
     setNormalColor();
     system("cls");
     setNormalColor();
 }
 
-// This pause lets the user read messages before the screen refreshes again
+// This pause lets the user read messages before the screen refreshes again and also sets the color back to normal because sometimes the color can get messed up after printing colored boxes
 void pauseScreen() {
     cout << "\nPress Enter to continue...";
     cin.ignore(1000, '\n');
